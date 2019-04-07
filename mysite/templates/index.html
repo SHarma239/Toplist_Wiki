@@ -1,0 +1,107 @@
+<html>
+
+	<head>
+
+		<title>TopList</title>
+
+	</head>
+
+	<body>
+	<h1>This is a web page fetching all the edits from the last 24 hours using Wikipedia API</h1>
+	</br>
+	<marquee>
+	<h2>And displays a top list of 100 editors</h2>
+	</marquee>
+
+	</br>
+	</br>
+
+
+{{query}}
+</br>
+</br>
+<p id = "divId"></p>
+
+
+<table style="width:100%">
+  <tr>
+    <th>User id</th>
+    <th>Recent changes</th> 
+    <th>TIme</th>
+  </tr>
+  <tr>
+    <td id="1"></td>
+    <td id="2"></td>
+    <td id="3"></td>
+  </tr>
+</table>
+
+
+	<script>
+
+ var obj=@HTML.Raw(JSON.parse(query));
+document.getElementById('divId').innerHTML = obj.recentchanges[0].user;
+
+for (var i = 0; i < 1; i++) {
+  console.log(obj.recentchanges[0].user);
+}
+
+/*
+
+
+let url = DATA.json();
+
+let counter = 0;
+
+function setup(){
+	noCanvas();
+	ui = select('#ui');
+	ui.changed(goWiki);
+	goWiki();
+}
+
+function goWiki(term) {
+	//let term = userInput.value();
+	counter = counter + 1;
+
+	if(counter<10){
+
+	let url  = searchUrl+term;
+	loadJSON(url,gotData,'json');
+	console.log(term);
+	}
+}
+
+function gotData(data){
+	console.log(data);
+	 let len = data[1].length;
+	 let index = floor(random(len));
+	 var title = data[1][index];
+
+	createP(title);
+	console.log(data[1][index]);
+	loadJSON(url,gotContent);
+
+
+}
+
+
+function gotContent(data){
+	let page = data.query.pages;
+	let pageId = Object.keys(data.query.pages);
+		console.log(pageId);
+	let content = page[pageId].revisions[0]['*'];
+		console.log(content);
+
+	goWiki(word);
+
+}
+
+*/
+
+
+	</script>
+
+	</body>
+
+</html>
