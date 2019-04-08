@@ -4,10 +4,10 @@
 
 		<title>TopList</title>
 
-	</head>
+	</head> 
 
 	<body>
-	<h1>This is a web page fetching all the edits from the last 24 hours using Wikipedia API</h1>
+	<h1>This is a web page fetching all the edits from the last 24 hours using an API</h1>
 	</br>
 	<marquee>
 	<h2>And displays a top list of 100 editors</h2>
@@ -17,17 +17,16 @@
 	</br>
 
 
-{{query}}
 </br>
 </br>
 <p id = "divId"></p>
 
 
+
 <table style="width:100%">
   <tr>
-    <th>User id</th>
-    <th>Recent changes</th> 
-    <th>TIme</th>
+    <th>User</th>
+    <th>Edits</th> 
   </tr>
   <tr>
     <td id="1"></td>
@@ -37,14 +36,56 @@
 </table>
 
 
-	<script>
+<script type="text/javascript" src = 
+"https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"> 
+</script> 
 
- var obj=@HTML.Raw(JSON.parse(query));
-document.getElementById('divId').innerHTML = obj.recentchanges[0].user;
+<script type ="text/javascript">
 
-for (var i = 0; i < 1; i++) {
-  console.log(obj.recentchanges[0].user);
+
+
+
+
+var arr = [{'oldlen': 6788, 'timestamp': '2019-04-07T19:36:25Z', 'rcid': 1143940543, 'pageid': 60430395, 'parsedcomment': '', 'ns': 2, 'title': 'User:Krompir.png/sandbox', 'type': 'edit', 'newlen': 6977, 'comment': '', 'old_revid': 891288699, 'revid': 891408183, 'user': 'Krompir.png'}, 
+{'oldlen': 5164, 'timestamp': '2019-04-07T19:36:25Z', 'rcid': 1143940544, 'pageid': 41131005, 'parsedcomment': 'most recent results, added 2, total 12', 'ns': 2, 'title': 'User:AlexNewArtBot/BahrainSearchResult', 'type': 'edit', 'newlen': 6113, 'comment': 'most recent results, added 2, total 12', 'old_revid': 891260493, 'revid': 891408185, 'bot': '', 'user': 'InceptionBot'}, {'oldlen': 686, 'timestamp': '2019-04-07T19:36:25Z', 'rcid': 1143940547, 'pageid': 41131006, 'parsedcomment': 'most recent scoring', 'ns': 2, 'title': 'User:InceptionBot/NewPageSearch/Bahrain/log', 'type': 'edit', 'newlen': 681, 'comment': 'most recent scoring', 'old_revid': 891260495, 'revid': 891408186, 'bot': '', 'user': 'InceptionBot'}, {'oldlen': 205252, 'timestamp': '2019-04-07T19:36:26Z', 'rcid': 1143940552, 'pageid': 20853827, 'parsedcomment': '<span dir="auto"><span class="autocomment"><a href="/wiki/Deaths_in_1999#22" title="Deaths in 1999">→\u200e22</a>: </span> Added entries</span>', 'ns': 0, 'title': 'Deaths in 1999', 'type': 'edit', 'newlen': 205782, 'comment': '/* 22 */ Added entries', 'old_revid': 891405286, 'revid': 891408187, 'user': 'Mill 1'}, {'oldlen': 2096, 'timestamp': '2019-04-07T19:36:26Z', 'rcid': 1143940553, 'pageid': 10604765, 'parsedcomment': 'Added Mark Abrahams.', 'ns': 0, 'title': 'Abrahams', 'type': 'edit', 'newlen': 2171, 'comment': 'Added Mark Abrahams.', 'old_revid': 867703387, 'revid': 891408188, 'user': 'Teblick'}, {'oldlen': 11213, 'timestamp': '2019-04-07T19:36:27Z', 'rcid': 1143940557, 'pageid': 48429321, 'parsedcomment': '', 'ns': 0, 'title': 'Zack Knight', 'type': 'edit', 'newlen': 11210, 'comment': '', 'old_revid': 891407888, 'revid': 891408189, 'anon': '', 'user': '117.216.59.123'}, {'oldlen': 2161, 'timestamp': '2019-04-07T19:36:27Z', 'rcid': 1143940568, 'pageid': 25007744, 'parsedcomment': 'removed <a href="/wiki/Category:Association_footballers_not_categorized_by_position" title="Category:Association footballers not categorized by position">Category:Association footballers not categorized by position</a>; added <a href="/wiki/Category:Association_football_forwards" title="Category:Association football forwards">Category:Association football forwards</a> using <a href="/wiki/Wikipedia:HC" class="mw-redirect" title="Wikipedia:HC">HotCat</a>', 'ns': 0, 'title': 'John van Helden', 'type': 'edit', 'newlen': 2139, 'comment': 'removed [[Category:Association footballers not categorized by position]]; added [[Category:Association football forwards]] using [[WP:HC|HotCat]]', 'old_revid': 853755367, 'revid': 891408190, 'user': 'Struway2'}, {'oldlen': 4328, 'timestamp': '2019-04-07T19:36:27Z', 'rcid': 1143940571, 'pageid': 43432235, 'parsedcomment': 'Added content', 'ns': 0, 'title': 'Darko Pajović', 'type': 'edit', 'newlen': 4357, 'comment': 'Added content', 'old_revid': 883663998, 'revid': 891408191, 'anon': '', 'user': '78.155.54.24'}, {'oldlen': 2667, 'timestamp': '2019-04-07T19:36:27Z', 'rcid': 1143940603, 'pageid': 58506358, 'parsedcomment': 'Nominated for deletion at <a href="/wiki/Wikipedia:Miscellany_for_deletion/Mass-created_portals_based_on_a_single_navbox" title="Wikipedia:Miscellany for deletion/Mass-created portals based on a single navbox">Wikipedia:Miscellany for deletion/Mass-created portals based on a single navbox</a>', 'ns': 100, 'title': 'Portal:Genetic engineering', 'type': 'edit', 'newlen': 2729, 'comment': 'Nominated for deletion at [[Wikipedia:Miscellany for deletion/Mass-created portals based on a single navbox]]', 'old_revid': 884947731, 'revid': 891408205, 'user': 'JJMC89'}, {'oldlen': 44115, 'timestamp': '2019-04-07T19:36:28Z', 'rcid': 1143940569, 'pageid': 27298224, 'comment': '/* Pitch accent */ just orphan', 'ns': 0, 'title': 'Serbo-Croatian phonology', 'type': 'edit', 'newlen': 44108, 'minor': '', 'parsedcomment': '<span dir="auto"><span class="autocomment"><a href="/wiki/Serbo-Croatian_phonology#Pitch_accent" title="Serbo-Croatian phonology">→\u200ePitch accent</a>: </span> just orphan</span>', 'old_revid': 885866366, 'revid': 891408192, 'user': '2dk'}];
+
+
+
+
+var objj ={};
+
+//obj =_.countBy(arr,'user');
+
+/*var ary2D = Object.keys(objj).map(function (key) {
+    return objj[key];
+});
+*/
+document.write(_.countBy(arr,'user'));
+//document.write(ary2D);
+
+  //document.getElementById('divId').innerHTML = obj[0].user;
+
+
+
+/**
+var arr2 = [ ];
+
+var i;
+for(i=0;i<arr.length;i++)
+{
+	arr2[i]=arr[i].user;
 }
+
+
+var result = { };
+for( i = 0; i < arr2.length; ++i) {
+    if(!result[arr2[i]])
+        result[arr2[i]] = 0;
+    ++result[arr2[i]];
+}
+
+*/
+
 
 /*
 
